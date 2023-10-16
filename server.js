@@ -3,7 +3,7 @@ const fs = require('fs');
 const http = require("http");
 
 let host = 'localhost';
-let port = 8080;
+let port = 8000;
 
 let xmlFile = 'data.xml';
 let totalIncome = 'BS2_IncomeTotal';
@@ -35,16 +35,6 @@ const filteredData = {
 
 const builder = new xml.XMLBuilder();
 const xmlStr = builder.build(filteredData);
-
-let filterdXML = 'filterdata.xml';
-
-try {
-  fs.writeFileSync(filterdXML, xmlStr);
-  console.log('XML файл збережено!');
-} catch (err) {
-  console.error('Помилка під час запису XML файлу:', err);
-  return;
-}
 
 
 const server = http.createServer(function(req,res){
